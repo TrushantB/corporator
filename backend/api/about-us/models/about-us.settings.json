@@ -1,0 +1,76 @@
+{
+  "connection": "default",
+  "collectionName": "about_uses",
+  "info": {
+    "name": "About Us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "face_img": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "party_name": {
+      "type": "string"
+    },
+    "party_symbol": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "mob_no": {
+      "type": "integer"
+    },
+    "mail_id": {
+      "type": "string"
+    },
+    "facebook_link": {
+      "type": "string"
+    },
+    "twitter_link": {
+      "type": "string"
+    },
+    "linkedin_link": {
+      "type": "string"
+    },
+    "insta_link": {
+      "type": "string"
+    },
+    "profile_image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "info": {
+      "type": "richtext"
+    },
+    "vision": {
+      "type": "richtext"
+    },
+    "mission": {
+      "type": "richtext"
+    },
+    "office_address": {
+      "type": "text"
+    },
+    "android_link": {
+      "type": "string"
+    },
+    "google_map_link": {
+      "type": "string"
+    }
+  }
+}

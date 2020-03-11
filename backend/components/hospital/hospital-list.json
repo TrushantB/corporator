@@ -1,0 +1,17 @@
+{
+  "info": {
+    "name": "Hospital List",
+    "icon": "ambulance"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "mobile_no": {
+      "type": "integer"
+    }
+  },
+  "connection": "default",
+  "collectionName": "components_hospital_hospital_lists"
+}
