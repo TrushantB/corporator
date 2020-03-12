@@ -1,0 +1,542 @@
+type AboutUs {
+  first_name: String
+  last_name: String
+  face_img: UploadFile
+  party_name: String
+  party_symbol: UploadFile
+  mob_no: Int
+  mail_id: String
+  facebook_link: String
+  twitter_link: String
+  linkedin_link: String
+  insta_link: String
+  profile_image: UploadFile
+  info: String
+  vision: String
+  mission: String
+  office_address: String
+  android_link: String
+  google_map_link: String
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input AboutUsInput {
+  first_name: String
+  last_name: String
+  face_img: ID
+  party_name: String
+  party_symbol: ID
+  mob_no: Int
+  mail_id: String
+  facebook_link: String
+  twitter_link: String
+  linkedin_link: String
+  insta_link: String
+  profile_image: ID
+  info: String
+  vision: String
+  mission: String
+  office_address: String
+  android_link: String
+  google_map_link: String
+}
+
+type ComponentHospitalHospitalList {
+  Name: String
+  mobile_no: Int
+  id: ID!
+}
+
+input ComponentHospitalHospitalListInput {
+  Name: String
+  mobile_no: Int
+}
+
+type ComponentPoliceStationPoliceStation {
+  name: String
+  mobile_no: Int
+  id: ID!
+}
+
+input ComponentPoliceStationPoliceStationInput {
+  name: String
+  mobile_no: Int
+}
+
+input createAboutUsInput {
+  data: AboutUsInput
+}
+
+type createAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input createEmergencyContactInput {
+  data: EmergencyContactInput
+}
+
+type createEmergencyContactPayload {
+  emergencyContact: EmergencyContact
+}
+
+input createGalleryInput {
+  data: GalleryInput
+}
+
+type createGalleryPayload {
+  gallery: Gallery
+}
+
+input createPostInput {
+  data: PostInput
+}
+
+type createPostPayload {
+  post: Post
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input deleteAboutUsInput {
+  where: InputID
+}
+
+type deleteAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input deleteEmergencyContactInput {
+  where: InputID
+}
+
+type deleteEmergencyContactPayload {
+  emergencyContact: EmergencyContact
+}
+
+input deleteGalleryInput {
+  where: InputID
+}
+
+type deleteGalleryPayload {
+  gallery: Gallery
+}
+
+input deletePostInput {
+  where: InputID
+}
+
+type deletePostPayload {
+  post: Post
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editAboutUsInput {
+  first_name: String
+  last_name: String
+  face_img: ID
+  party_name: String
+  party_symbol: ID
+  mob_no: Int
+  mail_id: String
+  facebook_link: String
+  twitter_link: String
+  linkedin_link: String
+  insta_link: String
+  profile_image: ID
+  info: String
+  vision: String
+  mission: String
+  office_address: String
+  android_link: String
+  google_map_link: String
+}
+
+input editComponentHospitalHospitalListInput {
+  id: ID
+  Name: String
+  mobile_no: Int
+}
+
+input editComponentPoliceStationPoliceStationInput {
+  id: ID
+  name: String
+  mobile_no: Int
+}
+
+input editEmergencyContactInput {
+  Hospitals: [editComponentHospitalHospitalListInput]
+  pstation: [editComponentPoliceStationPoliceStationInput]
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input editGalleryInput {
+  title: String
+  images: [ID]
+}
+
+input editPostInput {
+  title: String
+  date: Date
+  description: String
+  post_image: ID
+  post_gallery: [ID]
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+type EmergencyContact {
+  Hospitals: [ComponentHospitalHospitalList]
+  pstation: [ComponentPoliceStationPoliceStation]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input EmergencyContactInput {
+  Hospitals: [ComponentHospitalHospitalListInput]
+  pstation: [ComponentPoliceStationPoliceStationInput]
+}
+
+input FileInput {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+}
+
+type Gallery {
+  title: String
+  images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input GalleryInput {
+  title: String
+  images: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | AboutUs | createAboutUsPayload | updateAboutUsPayload | deleteAboutUsPayload | EmergencyContact | createEmergencyContactPayload | updateEmergencyContactPayload | deleteEmergencyContactPayload | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | Post | createPostPayload | updatePostPayload | deletePostPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  createAboutUs(input: createAboutUsInput): createAboutUsPayload
+  updateAboutUs(input: updateAboutUsInput): updateAboutUsPayload
+  deleteAboutUs(input: deleteAboutUsInput): deleteAboutUsPayload
+  createEmergencyContact(input: createEmergencyContactInput): createEmergencyContactPayload
+  updateEmergencyContact(input: updateEmergencyContactInput): updateEmergencyContactPayload
+  deleteEmergencyContact(input: deleteEmergencyContactInput): deleteEmergencyContactPayload
+  createGallery(input: createGalleryInput): createGalleryPayload
+  updateGallery(input: updateGalleryInput): updateGalleryPayload
+  deleteGallery(input: deleteGalleryInput): deleteGalleryPayload
+  createPost(input: createPostInput): createPostPayload
+  updatePost(input: updatePostInput): updatePostPayload
+  deletePost(input: deletePostInput): deletePostPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UserInput!): UsersPermissionsLoginPayload!
+}
+
+type Post {
+  title: String
+  date: Date
+  description: String
+  post_image: UploadFile
+  post_gallery(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input PostInput {
+  title: String
+  date: Date
+  description: String
+  post_image: ID
+  post_gallery: [ID]
+}
+
+type Query {
+  aboutUs(id: ID!): AboutUs
+  aboutuses(sort: String, limit: Int, start: Int, where: JSON): [AboutUs]
+  emergencyContact(id: ID!): EmergencyContact
+  emergencyContacts(sort: String, limit: Int, start: Int, where: JSON): [EmergencyContact]
+  gallery(id: ID!): Gallery
+  galleries(sort: String, limit: Int, start: Int, where: JSON): [Gallery]
+  post(id: ID!): Post
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateAboutUsInput {
+  where: InputID
+  data: editAboutUsInput
+}
+
+type updateAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input updateEmergencyContactInput {
+  where: InputID
+  data: editEmergencyContactInput
+}
+
+type updateEmergencyContactPayload {
+  emergencyContact: EmergencyContact
+}
+
+input updateGalleryInput {
+  where: InputID
+  data: editGalleryInput
+}
+
+type updateGalleryPayload {
+  gallery: Gallery
+}
+
+input updatePostInput {
+  where: InputID
+  data: editPostInput
+}
+
+type updatePostPayload {
+  post: Post
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String!
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+  id: ID!
+}
+
+type UsersPermissionsRole {
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  id: ID!
+}
+
+type UsersPermissionsUser {
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
