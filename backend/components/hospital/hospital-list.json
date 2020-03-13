@@ -1,4 +1,6 @@
 {
+  "connection": "default",
+  "collectionName": "components_hospital_hospital_lists",
   "info": {
     "name": "Hospital List",
     "icon": "ambulance"
@@ -9,9 +11,7 @@
       "type": "string"
     },
     "mobile_no": {
-      "type": "integer"
+      "type": "biginteger"
     }
-  },
-  "connection": "default",
-  "collectionName": "components_hospital_hospital_lists"
+  }
 }

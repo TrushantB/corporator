@@ -45,24 +45,24 @@ input AboutUsInput {
 
 type ComponentHospitalHospitalList {
   Name: String
-  mobile_no: Int
+  mobile_no: Long
   id: ID!
 }
 
 input ComponentHospitalHospitalListInput {
   Name: String
-  mobile_no: Int
+  mobile_no: Long
 }
 
 type ComponentPoliceStationPoliceStation {
   name: String
-  mobile_no: Int
+  mobile_no: Long
   id: ID!
 }
 
 input ComponentPoliceStationPoliceStationInput {
   name: String
-  mobile_no: Int
+  mobile_no: Long
 }
 
 input createAboutUsInput {
@@ -199,13 +199,13 @@ input editAboutUsInput {
 input editComponentHospitalHospitalListInput {
   id: ID
   Name: String
-  mobile_no: Int
+  mobile_no: Long
 }
 
 input editComponentPoliceStationPoliceStationInput {
   id: ID
   name: String
-  mobile_no: Int
+  mobile_no: Long
 }
 
 input editEmergencyContactInput {
@@ -229,6 +229,7 @@ input editFileInput {
 input editGalleryInput {
   title: String
   images: [ID]
+  image: ID
 }
 
 input editPostInput {
@@ -286,6 +287,7 @@ input FileInput {
 
 type Gallery {
   title: String
+  image: UploadFile
   images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   id: ID!
   created_at: DateTime!
@@ -295,6 +297,7 @@ type Gallery {
 input GalleryInput {
   title: String
   images: [ID]
+  image: ID
 }
 
 input InputID {

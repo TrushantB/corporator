@@ -1,4 +1,6 @@
 {
+  "connection": "default",
+  "collectionName": "galleries",
   "info": {
     "name": "Gallery"
   },
@@ -15,8 +17,12 @@
       "via": "related",
       "plugin": "upload",
       "required": false
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
     }
-  },
-  "connection": "default",
-  "collectionName": "galleries"
+  }
 }

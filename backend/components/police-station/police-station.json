@@ -1,4 +1,6 @@
 {
+  "connection": "default",
+  "collectionName": "components_police_station_police_stations",
   "info": {
     "name": "Police Station",
     "icon": "bus"
@@ -9,9 +11,7 @@
       "type": "string"
     },
     "mobile_no": {
-      "type": "integer"
+      "type": "biginteger"
     }
-  },
-  "connection": "default",
-  "collectionName": "components_police_station_police_stations"
+  }
 }
