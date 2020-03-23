@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/social-work-details",
+      "handler": "social-work-details.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/social-work-details/count",
+      "handler": "social-work-details.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/social-work-details/:id",
+      "handler": "social-work-details.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/social-work-details",
+      "handler": "social-work-details.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/social-work-details/:id",
+      "handler": "social-work-details.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/social-work-details/:id",
+      "handler": "social-work-details.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "info": {
+    "name": "Recent Activity"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "richtext"
+    }
+  },
+  "connection": "default",
+  "collectionName": "recent_activities"
+}

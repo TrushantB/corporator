@@ -31,7 +31,7 @@
       "required": false
     },
     "mob_no": {
-      "type": "integer"
+      "type": "biginteger"
     },
     "mail_id": {
       "type": "string"
@@ -71,6 +71,15 @@
     },
     "google_map_link": {
       "type": "string"
+    },
+    "home_banner": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "contact_us_info": {
+      "type": "richtext"
     }
   }
 }

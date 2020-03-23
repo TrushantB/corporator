@@ -4,7 +4,7 @@ type AboutUs {
   face_img: UploadFile
   party_name: String
   party_symbol: UploadFile
-  mob_no: Int
+  mob_no: Long
   mail_id: String
   facebook_link: String
   twitter_link: String
@@ -17,6 +17,8 @@ type AboutUs {
   office_address: String
   android_link: String
   google_map_link: String
+  contact_us_info: String
+  home_banner(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
@@ -28,7 +30,7 @@ input AboutUsInput {
   face_img: ID
   party_name: String
   party_symbol: ID
-  mob_no: Int
+  mob_no: Long
   mail_id: String
   facebook_link: String
   twitter_link: String
@@ -41,6 +43,8 @@ input AboutUsInput {
   office_address: String
   android_link: String
   google_map_link: String
+  home_banner: [ID]
+  contact_us_info: String
 }
 
 type ComponentHospitalHospitalList {
@@ -89,6 +93,14 @@ type createGalleryPayload {
   gallery: Gallery
 }
 
+input createHomeInput {
+  data: HomeInput
+}
+
+type createHomePayload {
+  home: Home
+}
+
 input createPostInput {
   data: PostInput
 }
@@ -97,12 +109,36 @@ type createPostPayload {
   post: Post
 }
 
+input createRecentActivityInput {
+  data: RecentActivityInput
+}
+
+type createRecentActivityPayload {
+  recentActivity: RecentActivity
+}
+
+input createRegisterComplaintInput {
+  data: RegisterComplaintInput
+}
+
+type createRegisterComplaintPayload {
+  registerComplaint: RegisterComplaints
+}
+
 input createRoleInput {
   data: RoleInput
 }
 
 type createRolePayload {
   role: UsersPermissionsRole
+}
+
+input createSocialWorkDetailInput {
+  data: SocialWorkDetailInput
+}
+
+type createSocialWorkDetailPayload {
+  socialWorkDetail: SocialWorkDetails
 }
 
 input createUserInput {
@@ -151,6 +187,14 @@ type deleteGalleryPayload {
   gallery: Gallery
 }
 
+input deleteHomeInput {
+  where: InputID
+}
+
+type deleteHomePayload {
+  home: Home
+}
+
 input deletePostInput {
   where: InputID
 }
@@ -159,12 +203,36 @@ type deletePostPayload {
   post: Post
 }
 
+input deleteRecentActivityInput {
+  where: InputID
+}
+
+type deleteRecentActivityPayload {
+  recentActivity: RecentActivity
+}
+
+input deleteRegisterComplaintInput {
+  where: InputID
+}
+
+type deleteRegisterComplaintPayload {
+  registerComplaint: RegisterComplaints
+}
+
 input deleteRoleInput {
   where: InputID
 }
 
 type deleteRolePayload {
   role: UsersPermissionsRole
+}
+
+input deleteSocialWorkDetailInput {
+  where: InputID
+}
+
+type deleteSocialWorkDetailPayload {
+  socialWorkDetail: SocialWorkDetails
 }
 
 input deleteUserInput {
@@ -181,7 +249,7 @@ input editAboutUsInput {
   face_img: ID
   party_name: String
   party_symbol: ID
-  mob_no: Int
+  mob_no: Long
   mail_id: String
   facebook_link: String
   twitter_link: String
@@ -194,6 +262,8 @@ input editAboutUsInput {
   office_address: String
   android_link: String
   google_map_link: String
+  home_banner: [ID]
+  contact_us_info: String
 }
 
 input editComponentHospitalHospitalListInput {
@@ -232,6 +302,11 @@ input editGalleryInput {
   image: ID
 }
 
+input editHomeInput {
+  title: String
+  banner: [ID]
+}
+
 input editPostInput {
   title: String
   date: Date
@@ -240,12 +315,32 @@ input editPostInput {
   post_gallery: [ID]
 }
 
+input editRecentActivityInput {
+  title: String
+  image: [ID]
+  description: String
+}
+
+input editRegisterComplaintInput {
+  title: String
+  description: String
+  sub_title: String
+}
+
 input editRoleInput {
   name: String
   description: String
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editSocialWorkDetailInput {
+  title: String
+  image: ID
+  description: String
+  date: String
+  gallery: [ID]
 }
 
 input editUserInput {
@@ -300,6 +395,19 @@ input GalleryInput {
   image: ID
 }
 
+type Home {
+  title: String
+  banner(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input HomeInput {
+  title: String
+  banner: [ID]
+}
+
 input InputID {
   id: ID!
 }
@@ -312,7 +420,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | AboutUs | createAboutUsPayload | updateAboutUsPayload | deleteAboutUsPayload | EmergencyContact | createEmergencyContactPayload | updateEmergencyContactPayload | deleteEmergencyContactPayload | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | Post | createPostPayload | updatePostPayload | deletePostPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | AboutUs | createAboutUsPayload | updateAboutUsPayload | deleteAboutUsPayload | EmergencyContact | createEmergencyContactPayload | updateEmergencyContactPayload | deleteEmergencyContactPayload | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | Home | createHomePayload | updateHomePayload | deleteHomePayload | Post | createPostPayload | updatePostPayload | deletePostPayload | RecentActivity | createRecentActivityPayload | updateRecentActivityPayload | deleteRecentActivityPayload | RegisterComplaints | createRegisterComplaintPayload | updateRegisterComplaintPayload | deleteRegisterComplaintPayload | SocialWorkDetails | createSocialWorkDetailPayload | updateSocialWorkDetailPayload | deleteSocialWorkDetailPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createAboutUs(input: createAboutUsInput): createAboutUsPayload
@@ -324,9 +432,21 @@ type Mutation {
   createGallery(input: createGalleryInput): createGalleryPayload
   updateGallery(input: updateGalleryInput): updateGalleryPayload
   deleteGallery(input: deleteGalleryInput): deleteGalleryPayload
+  createHome(input: createHomeInput): createHomePayload
+  updateHome(input: updateHomeInput): updateHomePayload
+  deleteHome(input: deleteHomeInput): deleteHomePayload
   createPost(input: createPostInput): createPostPayload
   updatePost(input: updatePostInput): updatePostPayload
   deletePost(input: deletePostInput): deletePostPayload
+  createRecentActivity(input: createRecentActivityInput): createRecentActivityPayload
+  updateRecentActivity(input: updateRecentActivityInput): updateRecentActivityPayload
+  deleteRecentActivity(input: deleteRecentActivityInput): deleteRecentActivityPayload
+  createRegisterComplaint(input: createRegisterComplaintInput): createRegisterComplaintPayload
+  updateRegisterComplaint(input: updateRegisterComplaintInput): updateRegisterComplaintPayload
+  deleteRegisterComplaint(input: deleteRegisterComplaintInput): deleteRegisterComplaintPayload
+  createSocialWorkDetail(input: createSocialWorkDetailInput): createSocialWorkDetailPayload
+  updateSocialWorkDetail(input: updateSocialWorkDetailInput): updateSocialWorkDetailPayload
+  deleteSocialWorkDetail(input: deleteSocialWorkDetailInput): deleteSocialWorkDetailPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -377,8 +497,16 @@ type Query {
   emergencyContacts(sort: String, limit: Int, start: Int, where: JSON): [EmergencyContact]
   gallery(id: ID!): Gallery
   galleries(sort: String, limit: Int, start: Int, where: JSON): [Gallery]
+  home(id: ID!): Home
+  homes(sort: String, limit: Int, start: Int, where: JSON): [Home]
   post(id: ID!): Post
   posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  recentActivity(id: ID!): RecentActivity
+  recentActivities(sort: String, limit: Int, start: Int, where: JSON): [RecentActivity]
+  registerComplaint(id: ID!): RegisterComplaints
+  registerComplaints(sort: String, limit: Int, start: Int, where: JSON): [RegisterComplaints]
+  socialWorkDetail(id: ID!): SocialWorkDetails
+  socialWorkDetails(sort: String, limit: Int, start: Int, where: JSON): [SocialWorkDetails]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -391,12 +519,61 @@ type Query {
   me: UsersPermissionsMe
 }
 
+type RecentActivity {
+  title: String
+  description: String
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input RecentActivityInput {
+  title: String
+  image: [ID]
+  description: String
+}
+
+input RegisterComplaintInput {
+  title: String
+  description: String
+  sub_title: String
+}
+
+type RegisterComplaints {
+  title: String
+  description: String
+  sub_title: String
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
 input RoleInput {
   name: String!
   description: String
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input SocialWorkDetailInput {
+  title: String
+  image: ID
+  description: String
+  date: String
+  gallery: [ID]
+}
+
+type SocialWorkDetails {
+  title: String
+  image: UploadFile
+  description: String
+  date: String
+  gallery(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
 }
 
 """A time string with format: HH:mm:ss.SSS"""
@@ -429,6 +606,15 @@ type updateGalleryPayload {
   gallery: Gallery
 }
 
+input updateHomeInput {
+  where: InputID
+  data: editHomeInput
+}
+
+type updateHomePayload {
+  home: Home
+}
+
 input updatePostInput {
   where: InputID
   data: editPostInput
@@ -438,6 +624,24 @@ type updatePostPayload {
   post: Post
 }
 
+input updateRecentActivityInput {
+  where: InputID
+  data: editRecentActivityInput
+}
+
+type updateRecentActivityPayload {
+  recentActivity: RecentActivity
+}
+
+input updateRegisterComplaintInput {
+  where: InputID
+  data: editRegisterComplaintInput
+}
+
+type updateRegisterComplaintPayload {
+  registerComplaint: RegisterComplaints
+}
+
 input updateRoleInput {
   where: InputID
   data: editRoleInput
@@ -445,6 +649,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateSocialWorkDetailInput {
+  where: InputID
+  data: editSocialWorkDetailInput
+}
+
+type updateSocialWorkDetailPayload {
+  socialWorkDetail: SocialWorkDetails
 }
 
 input updateUserInput {
