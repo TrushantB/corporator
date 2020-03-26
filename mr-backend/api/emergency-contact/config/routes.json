@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/emergency-contacts",
+      "handler": "emergency-contact.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/emergency-contacts/count",
+      "handler": "emergency-contact.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/emergency-contacts/:id",
+      "handler": "emergency-contact.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/emergency-contacts",
+      "handler": "emergency-contact.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/emergency-contacts/:id",
+      "handler": "emergency-contact.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/emergency-contacts/:id",
+      "handler": "emergency-contact.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

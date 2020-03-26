@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "Register Complaints"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "sub_title": {
+      "type": "string"
+    }
+  },
+  "connection": "default",
+  "collectionName": "register_complaints"
+}

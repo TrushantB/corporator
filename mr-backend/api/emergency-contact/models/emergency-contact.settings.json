@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "emergency_contacts",
+  "info": {
+    "name": "Emergency Contact"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Hospitals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "hospital.hospital-list"
+    },
+    "pstation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "police-station.police-station"
+    }
+  }
+}
