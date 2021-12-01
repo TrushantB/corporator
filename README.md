@@ -8,18 +8,13 @@ for geexu code
 
 ### Install Dependencies
 ```bash
-npm install -g yarn
+npm install
 ```
-
-```bash
-yarn
-```
-
 
 ### Run Aplication
 
 ```bash 
-yarn start 
+npm start 
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
