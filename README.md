@@ -1,6 +1,6 @@
 <h1 align="center">Manual Annotation</h1>
 
-# advit_frontend
+# Advit Frontend
 for geexu code 
 
 # :construction_worker: How to run
